@@ -1,3 +1,8 @@
+### How to run
+> ```bash
+> docker compose up
+> ```
+
 ### Basic JSON REST API
 > Contact
 > ```bash
