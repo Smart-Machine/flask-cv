@@ -1,0 +1,17 @@
+services:
+  api-v1:
+    build: ./services/web
+    command: gunicorn --workers 4 --bind 0.0.0.0:5000 'api:create_app()'
+    volumes:
+      - ./static:/home/app/web/static
+    ports:
+      - "5000:5000"
+
+  nginx:
+    build: ./services/nginx
+    volumes:
+      - ./static:/home/app/web/static
+    ports:
+      - "1337:80"
+    depends_on:
+      - api-v1
